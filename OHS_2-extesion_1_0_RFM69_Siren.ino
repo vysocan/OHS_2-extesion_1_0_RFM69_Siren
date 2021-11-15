@@ -194,7 +194,6 @@ void setDefault(){
   strcpy(&conf.reg[5+(REG_LEN*10)], "Remote AC Off"); // Set default name
   
   eeprom_update_block((const void*)&conf, (void*)0, sizeof(conf)); // Save current configuration 
-  
   Serial.println(F("Default conf."));
 }
 /*
@@ -256,7 +255,7 @@ void checkRadio(){
       Serial.print(radio.DATA[1], DEC);
       Serial.print(F("="));
       Serial.println(radio.DATA[2], DEC);
-      // Number matches local conf.freg.
+      // Number matches local conf. reg.
       if (radio.DATA[1] == conf.reg[2+(REG_LEN*9)]) digitalWrite(RELAY, radio.DATA[2]);
     }
   }
